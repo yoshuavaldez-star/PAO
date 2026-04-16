@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para ti 💖</title>
+<style>
+body {
+  margin: 0;
+  overflow: hidden;
+  background: linear-gradient(#ffdde1, #ee9ca7);
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+h1 {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  color: white;
+  font-size: 30px;
+}
+
+.element {
+  position: absolute;
+  font-size: 30px;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(-10%); }
+  100% { transform: translateY(110vh); }
+}
+</style>
+</head>
+<body>
+
+<h1>Para ti 💖<br>Me haces muy feliz ✨</h1>
+
+<script>
+const emojis = ["🌸","🌺","🌼","🐰","🐻","🐶","💖"];
+
+function crearElemento() {
+  const el = document.createElement("div");
+  el.classList.add("element");
+  el.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+  
+  el.style.left = Math.random() * 100 + "vw";
+  el.style.animationDuration = (Math.random() * 3 + 3) + "s";
+  el.style.fontSize = (Math.random() * 20 + 20) + "px";
+
+  document.body.appendChild(el);
+
+  setTimeout(() => {
+    el.remove();
+  }, 6000);
+}
+
+setInterval(crearElemento, 200);
+</script>
+
+</body>
+</html>
