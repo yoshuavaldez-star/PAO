@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Para ti 💖</title>
+<title>Para Paulina 💖</title>
 <style>
 body {
   margin: 0;
@@ -14,30 +14,42 @@ body {
 
 h1 {
   position: absolute;
-  top: 40%;
+  top: 35%;
   width: 100%;
   color: white;
-  font-size: 30px;
+  font-size: 32px;
+  padding: 0 20px;
+}
+
+p {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  color: white;
+  font-size: 20px;
 }
 
 .element {
   position: absolute;
   font-size: 30px;
-  animation: float 6s linear infinite;
+  animation: float linear infinite;
 }
 
 @keyframes float {
-  0% { transform: translateY(-10%); }
-  100% { transform: translateY(110vh); }
+  0% { transform: translateY(-10%); opacity: 1; }
+  100% { transform: translateY(110vh); opacity: 0; }
 }
 </style>
 </head>
 <body>
 
-<h1>Para ti 💖<br>Me haces muy feliz ✨</h1>
+<h1>Paulina 💖</h1>
+<p>Te quise hacer esto…<br>
+Es lo que sé hacer muy bien,<br>
+tiro líneas de código 💻✨</p>
 
 <script>
-const emojis = ["🌸","🌺","🌼","🐰","🐻","🐶","💖"];
+const emojis = ["🌸","🌺","🌼","🐰","🐻","🐶","💖","✨"];
 
 function crearElemento() {
   const el = document.createElement("div");
@@ -45,17 +57,17 @@ function crearElemento() {
   el.innerText = emojis[Math.floor(Math.random() * emojis.length)];
   
   el.style.left = Math.random() * 100 + "vw";
-  el.style.animationDuration = (Math.random() * 3 + 3) + "s";
+  el.style.animationDuration = (Math.random() * 3 + 4) + "s";
   el.style.fontSize = (Math.random() * 20 + 20) + "px";
 
   document.body.appendChild(el);
 
   setTimeout(() => {
     el.remove();
-  }, 6000);
+  }, 7000);
 }
 
-setInterval(crearElemento, 200);
+setInterval(crearElemento, 180);
 </script>
 
 </body>
