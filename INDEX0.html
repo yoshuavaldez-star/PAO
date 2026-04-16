@@ -2,72 +2,138 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Para Paulina 💖</title>
+<title>Sorpresa 💜</title>
+
 <style>
 body {
   margin: 0;
   overflow: hidden;
-  background: linear-gradient(#ffdde1, #ee9ca7);
   font-family: Arial, sans-serif;
-  text-align: center;
 }
 
-h1 {
-  position: absolute;
-  top: 35%;
+/* PANTALLA INICIAL */
+#inicio {
+  position: fixed;
   width: 100%;
+  height: 100vh;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  background: #a020f0;
   color: white;
-  font-size: 32px;
+  font-size: 24px;
+  padding: 20px 40px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0 0 25px #a020f0;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 40px #d580ff;
+}
+
+/* ESCENA */
+#escena {
+  display: none;
+  width: 100%;
+  height: 100vh;
+  background: radial-gradient(circle, #1a002b, #000000);
+  overflow: hidden;
+}
+
+/* TEXTO FINAL */
+#mensaje {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 28px;
   padding: 0 20px;
 }
 
-p {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  color: white;
-  font-size: 20px;
-}
-
+/* ELEMENTOS */
 .element {
   position: absolute;
-  font-size: 30px;
-  animation: float linear infinite;
+  animation: flotar linear infinite;
 }
 
-@keyframes float {
+@keyframes flotar {
   0% { transform: translateY(-10%); opacity: 1; }
   100% { transform: translateY(110vh); opacity: 0; }
 }
 </style>
 </head>
+
 <body>
 
-<h1>Paulina 💖</h1>
-<p>Te quise hacer esto…<br>
-Es lo que sé hacer muy bien,<br>
-tiro líneas de código 💻✨</p>
+<!-- INICIO -->
+<div id="inicio">
+  <button onclick="entrar()">TE TENGO UNA SORPRESA 💜</button>
+</div>
+
+<!-- ESCENA -->
+<div id="escena">
+  <div id="mensaje"></div>
+</div>
 
 <script>
-const emojis = ["🌸","🌺","🌼","🐰","🐻","🐶","💖","✨"];
+function entrar() {
+  document.getElementById("inicio").style.display = "none";
+  document.getElementById("escena").style.display = "block";
+
+  iniciarAnimacion();
+  mostrarMensaje();
+}
+
+/* ELEMENTOS */
+const emojis = ["🌸","🌺","🌼","🐰","🐻","🐶","💜","✨","🌙","🦋"];
 
 function crearElemento() {
   const el = document.createElement("div");
   el.classList.add("element");
   el.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-  
-  el.style.left = Math.random() * 100 + "vw";
-  el.style.animationDuration = (Math.random() * 3 + 4) + "s";
-  el.style.fontSize = (Math.random() * 20 + 20) + "px";
 
-  document.body.appendChild(el);
+  el.style.left = Math.random() * 100 + "vw";
+  el.style.animationDuration = (Math.random() * 4 + 4) + "s";
+  el.style.fontSize = (Math.random() * 25 + 20) + "px";
+
+  document.getElementById("escena").appendChild(el);
 
   setTimeout(() => {
     el.remove();
-  }, 7000);
+  }, 8000);
 }
 
-setInterval(crearElemento, 180);
+/* FONDO GALAXIA DINÁMICO */
+function cambiarFondo() {
+  const colores = [
+    "#1a002b", "#2b0033", "#000428", "#240046", "#3c096c", "#10002b"
+  ];
+  document.getElementById("escena").style.background =
+    `radial-gradient(circle, ${colores[Math.floor(Math.random()*colores.length)]}, #000000)`;
+}
+
+/* INICIAR */
+function iniciarAnimacion() {
+  setInterval(crearElemento, 150);
+  setInterval(cambiarFondo, 2000);
+}
+
+/* MENSAJE FINAL */
+function mostrarMensaje() {
+  setTimeout(() => {
+    document.getElementById("mensaje").innerHTML =
+      "Pao 💜<br><br>Esto es lo que sé hacer mejor...<br>tirar líneas de código 💻✨<br><br>Espero te guste 💖";
+  }, 5000);
+}
 </script>
 
 </body>
